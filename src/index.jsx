@@ -1,5 +1,5 @@
 import React from "react";
+// import "dotenv/config"
 
-function App() {
-  return <h1>Hello world</h1>;
-}
+import { App } from "./App"
+
