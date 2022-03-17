@@ -10,9 +10,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100vh;
   h1 {
     font-size: 80px;
   }
+}
+
+#root {
+  margin-bottom: 300px;
+}
+
+
+
+div#counter-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px 
+  
 }
