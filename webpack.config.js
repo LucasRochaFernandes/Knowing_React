@@ -6,7 +6,7 @@ const ReactRefreshWebPack = require("@pmmmwh/react-refresh-webpack-plugin");
 module.exports = {
   mode: isDevelopment ? "development" : "production", // mode development ou production,
   devtool: isDevelopment ? "eval-source-map" : "source-map", // melhora a localização do código no DevTools
-  entry: path.resolve(__dirname, "src", "index.jsx"),
+  entry: path.resolve(__dirname, "src", "index.tsx"),
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
@@ -25,7 +25,7 @@ module.exports = {
   },
   resolve: {
     // entender estas extensões
-    extensions: [".jsx", ".js"],
+    extensions: [".jsx", ".js", ".ts", ".tsx"],
   },
   module: {
     // quando for construir o frontend
