@@ -1,7 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { ids } = require("webpack");
 const isDevelopment = process.NODE_ENV !== "production";
+const ReactRefreshWebPack = require("@pmmmwh/react-refresh-webpack-plugin");
 
 module.exports = {
   mode: isDevelopment ? "development" : "production", // mode development ou production,
@@ -16,10 +16,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public", "index.html"),
     }),
-  ],
+    isDevelopment && new ReactRefreshWebPack(),
+  ].filter(Boolean),
   devServer: {
     // quais alterações no código o server será reinicializado
     static: path.resolve(__dirname, "public"),
+    hot: true,
   },
   resolve: {
     // entender estas extensões
@@ -31,7 +33,14 @@ module.exports = {
       {
         test: /\.(j|t)sx$/,
         exclude: /node_modules/,
-        use: "babel-loader",
+        use: {
+          loader: "babel-loader",
+          options: {
+            plugins: [
+              isDevelopment && require.resolve("react-refresh/babel"),
+            ].filter(Boolean),
+          },
+        },
       },
       {
         test: /\.scss$/,
