@@ -1,5 +1,7 @@
-import React from "react";
-// import "dotenv/config"
-
+import { render } from "react-dom";
 import { App } from "./App"
+
+render(<App />, document.getElementById("root"))
+
+
 
